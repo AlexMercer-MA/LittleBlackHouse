@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114708427472154690}
   m_Layer: 8
   m_Name: ShortPlatform_A
-  m_TagString: Untagged
+  m_TagString: DiXing
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 1585782602885076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.224, z: 1}
-  m_LocalScale: {x: 0.2, y: 0.04, z: 0.5454465}
+  m_LocalScale: {x: 0.2, y: 0.04, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,12 +88,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f31e10d2bc55f44dd9d4acd999b68cd4, type: 3}
-  m_Color: {r: 0.8867924, g: 0.47637996, b: 0.1966002, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dfc2046ac0d794cd6a528609dd5d3de0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.96, y: 1.94}
+  m_Size: {x: 8.75, y: 6.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

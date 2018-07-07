@@ -28,7 +28,7 @@ public class Traverable_Player:Traverable_Object
     {
         base.Go_A_World();
         player_a.speedX = player_b.speedX;
-        player_a.speedY = player_b.speedY;
+        player_a.speedY = -1 * player_b.speedY;
         World_A_Transform.localPosition = World_B_Transform.localPosition;
         /*player_a.enabled = true;
         player_b.enabled = false;*/
@@ -38,7 +38,7 @@ public class Traverable_Player:Traverable_Object
     {
         base.Go_B_World();
         player_b.speedX = player_a.speedX;
-        player_b.speedY = player_a.speedY;
+        player_b.speedY = -1 * player_a.speedY;
         World_B_Transform.localPosition = World_A_Transform.localPosition;
        /* player_b.enabled = true;
         player_a.enabled = false;*/

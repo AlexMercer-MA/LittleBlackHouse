@@ -37,6 +37,7 @@ public class Traverable_Object : MonoBehaviour
 
         collider_A = World_A_Transform.GetComponent<Collider2D>();
         collider_B = World_B_Transform.GetComponent<Collider2D>();
+
         StartDealPosition();
         Update_Object_Trigger();
       //  World_A_Transform.gameObject.AddComponent<Traverable_Triger>().Init(this);

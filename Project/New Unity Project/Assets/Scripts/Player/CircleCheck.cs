@@ -34,6 +34,6 @@ public class CircleCheck : MonoBehaviour {
     */
     public bool CheckCollided()
     {
-        return ( circleCollider.OverlapCollider(GameManerge.Get_obj.canshu,new Collider2D[5])-1> 0) ? true : false;
+        return ( circleCollider.OverlapCollider(GameManerge.Get_obj.canshu,new Collider2D[5])-2> 0) ? true : false;
     }
 }

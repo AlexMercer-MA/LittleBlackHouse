@@ -9,27 +9,52 @@ public class Traverable_Triger:MonoBehaviour
 
     Traverable_Object TObject;
     private CD_box wait_check;
-
+    private BoxCollider2D Colloder;
     bool Have_Object = false;
-    public void Init(Traverable_Object TObject)
+    private Collider2D[] collider2Ds;
+
+    public void Start()
     {
-        this.TObject = TObject;
+        Colloder = GetComponent<BoxCollider2D>();
+        Init();
+    }
+
+    public void Init()
+    {
+        this.TObject = Traverable_Player.GetInstance;
         wait_check = new CD_box(0.05f);
+        collider2Ds = new Collider2D[20];
     }
 
     public void Update()
     {
-        //TObject.Is_Can_Pass_World = true;
-        TObject.Is_Can_Pass_World = true;
-    }
-
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.tag=="DiXing")
+        ///Debug.Log(CheckCollided()) ;
+        
+        if(TObject.Is_In_A_World&& transform.parent.name== "Character_B")
         {
-            TObject.Is_Can_Pass_World = false;
+            TObject.Is_Can_Pass_World = CheckCollided() == 0;
         }
+        else if(!TObject.Is_In_A_World && transform.parent.name == "Character_A")
+        {
+            TObject.Is_Can_Pass_World = CheckCollided() == 0;
+        }
+     
     }
+    public int CheckCollided()
+    {
+        int di_number = 0;
+        int number = Colloder.OverlapCollider(GameManerge.Get_obj.canshu, collider2Ds);
+        for (int i = 0; i < number; i++)
+        {
+            if (collider2Ds[i].tag == "DiXing")
+            {
+                di_number++;
+              
+            }
+        }
+        return di_number;
+
+    }
+
 }
 

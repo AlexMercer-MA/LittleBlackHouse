@@ -21,7 +21,6 @@ public class Traverable_Player:Traverable_Object
     {
         base.Start();
         player_a = World_A_Transform.GetComponent<mycharacter_controller>();
-
         player_b = World_B_Transform.GetComponent<mycharacter_controller>();
     }
 

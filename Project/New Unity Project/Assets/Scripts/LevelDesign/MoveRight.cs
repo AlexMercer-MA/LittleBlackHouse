@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveRight : MonoBehaviour {
 
 	// Use this for initialization
-	void OnEnable () {
+	void Start () {
         this.transform.position = new Vector3(this.transform.position.x + 5f, this.transform.position.y, this.transform.position.z);
 	}
 	

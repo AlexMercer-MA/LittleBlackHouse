@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 70660812766846494}
   - component: {fileID: 114995647058148756}
   - component: {fileID: 114517908952505860}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: bullet
   m_TagString: monster
   m_Icon: {fileID: 0}
@@ -83,6 +83,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec4618bbabf9ea4dbf42729baca1747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_A: {fileID: 0}
+  player_B: {fileID: 0}
+  isWorld_A: 0
 --- !u!212 &212939357158265022
 SpriteRenderer:
   m_ObjectHideFlags: 1

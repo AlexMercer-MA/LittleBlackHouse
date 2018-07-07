@@ -6,30 +6,28 @@ using UnityEngine;
 public class CircleCheck : MonoBehaviour {
 
     public int collisionTargerNum = 0;
-    public CircleCollider2D circleCollider; 
-    
+    public CircleCollider2D circleCollider;
+    public string ignoreTagName = "ignore";
+
 	void Awake ()
     {
         circleCollider = this.GetComponent<CircleCollider2D>();
 	}
     
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D tempCollider)
     {
-
-        //Debug.Log(collider.name+" in");
-//        if (collider.gameObject.layer != GamePropertyManager.GetInstance.ignoreLayerIndex )
-  //      {
+        if (tempCollider.gameObject.tag != ignoreTagName)
+        {
             collisionTargerNum++;
-    //    }
+        }
     }
 
-    void OnTriggerExit2D(Collider2D collider)
+    void OnTriggerExit2D(Collider2D tempCollider)
     {
-        //Debug.Log(collider.name+" out");
-        //  if (collider.gameObject.layer != GamePropertyManager.GetInstance.ignoreLayerIndex)
-        //{
-        collisionTargerNum--;
-        //}
+        if (tempCollider.gameObject.tag != ignoreTagName)
+        {
+            collisionTargerNum--;
+        }
     }
 
     public bool CheckCollided()

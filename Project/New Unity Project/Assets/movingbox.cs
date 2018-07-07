@@ -9,17 +9,17 @@ public class movingbox : MonoBehaviour {
     public Vector3 endposition;
     Vector3 destination;
     void Awake() {
-        destination = transform.position;
+        destination = new Vector3(5,0,0);
     }
 	void Update () {
-        Debug.Log(destination.x);
-        if (Vector3.Distance(transform.position, endposition)<1){
+        Debug.Log(destination.y);
+        if (Vector3.Distance(transform.localPosition, endposition)<1){
             destination = startposition;          
-        }else if (Vector3.Distance(transform.position, startposition) < 1)
+        }else if (Vector3.Distance(transform.localPosition, startposition) < 1)
         {
             destination = endposition;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, destination, speed);
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, destination, speed);
     }
 }

@@ -56,8 +56,8 @@ public class mycharacter_controller : MonoBehaviour
 
         //Change Horizontal Speed
         speedX = PlayerInput.GetInstance.inputX * GamePropertyManager.GetInstance.moveSpeed;
-        anim.SetBool("IsMove", speedX != 0);
-
+        
+       
 
         //Change Vertical Speed
         if (!isGrounded)
@@ -71,8 +71,7 @@ public class mycharacter_controller : MonoBehaviour
             temple.y-=gMultiplier * 0.01f;
             rb2d.position = temple;
             speedY += GamePropertyManager.GetInstance.jumpSpeed * (-gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
-            anim.SetTrigger("Jump");
-            SoundManerge.Get_obj.PlayAudio(0);
+
         }
         else
         {
@@ -82,12 +81,6 @@ public class mycharacter_controller : MonoBehaviour
        
 
         rb2d.velocity = new Vector2(speedX, speedY);
-    }
-
-    public void Die()
-    {
-
-        anim.SetTrigger("Die");
     }
 
     void Update()

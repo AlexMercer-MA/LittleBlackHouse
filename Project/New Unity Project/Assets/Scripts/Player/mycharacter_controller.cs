@@ -13,7 +13,7 @@ public class mycharacter_controller : MonoBehaviour
     public CircleCheck groundCheck;
     public CircleCheck ceilCheck;
     public int gMultiplier;
-
+    public bool isZhuangQiang;
     public bool isGrounded;
     public bool isCeiled;
     public float initialYSpeed = -1.0f;
@@ -57,6 +57,9 @@ public class mycharacter_controller : MonoBehaviour
 
         //Change Horizontal Speed
         speedX = PlayerInput.GetInstance.inputX * GamePropertyManager.GetInstance.moveSpeed;
+        
+
+
         //Change Vertical Speed
         if (!isGrounded)
         {
@@ -71,6 +74,8 @@ public class mycharacter_controller : MonoBehaviour
         {
             speedY = 0;
         }
+
+       
 
         rb2d.velocity = new Vector2(speedX, speedY);
     }

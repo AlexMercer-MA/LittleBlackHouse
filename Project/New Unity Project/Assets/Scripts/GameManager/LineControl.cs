@@ -9,6 +9,24 @@ public class LineControl : Single_Behaviour<LineControl> {
     public Material mat;
     [Tooltip("线循环时间")]
     public float Loop_Time=3;
+
+    public float Line_Vecter
+    {
+        get
+        {
+            return GameManerge.Get_obj.Max_Position.x * 2 * Time.deltaTime / Loop_Time;
+        }
+    }
+    /// <summary>
+    /// 线x坐标
+    /// </summary>
+    public float Line_Position
+    {
+        get
+        {
+            return (Line_Number - 0.5f) * 2 * GameManerge.Get_obj.Max_Position.x;
+        }
+    }
     //获取线的数值
     public float Line_Number
     {

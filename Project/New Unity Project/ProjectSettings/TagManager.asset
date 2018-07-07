@@ -6,6 +6,7 @@ TagManager:
   tags:
   - monster
   - ignore
+  - DiXing
   layers:
   - Default
   - TransparentFX
@@ -17,6 +18,8 @@ TagManager:
   - 
   - World_A
   - World_B
+  - Line
+  - Player
   - 
   - 
   - 

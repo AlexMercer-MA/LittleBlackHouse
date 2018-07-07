@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 /// <summary>
 /// 仅控制游戏玩家的，穿越世界的脚本
@@ -10,7 +11,12 @@ public class Traverable_Player:Traverable_Object
 {
     protected mycharacter_controller player_a;
     protected mycharacter_controller player_b;
+    public static Traverable_Player GetInstance;
 
+    private void Awake()
+    {
+        GetInstance = this;
+     }
     public override void Start()
     {
         base.Start();
@@ -38,6 +44,15 @@ public class Traverable_Player:Traverable_Object
        /* player_b.enabled = true;
         player_a.enabled = false;*/
         player_a.speedY = 0;
+    }
+
+    protected override void ZhuangQiangA()
+    {
+        //player_a.isZhuangQiang = true;
+    }
+    protected override void ZhuangQiangB()
+    {
+        //player_b.isZhuangQiang = true;
     }
 }
 

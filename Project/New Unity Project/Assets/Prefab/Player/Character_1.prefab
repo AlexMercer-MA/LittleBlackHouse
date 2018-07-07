@@ -373,13 +373,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friend: {fileID: 0}
-  gravity: -9.8
   groundCheck: {fileID: 114743509250329520}
   ceilCheck: {fileID: 114262330157558016}
+  gMultiplier: 0
+  isZhuangQiang: 0
   isGrounded: 0
   isCeiled: 0
   initialYSpeed: -1
-  moveSpeed: 10
   jumpSpeed: 10
   speedX: 0
   speedY: 0

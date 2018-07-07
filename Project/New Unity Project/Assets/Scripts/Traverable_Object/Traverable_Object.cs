@@ -10,20 +10,22 @@ public class Traverable_Object : MonoBehaviour
     [Tooltip("B世界物体")]
     public Transform World_B_Transform;
 
-    Rigidbody2D rigi_A;
-    Rigidbody2D rigi_B;
+    protected Rigidbody2D rigi_A;
+    protected Rigidbody2D rigi_B;
 
-    Collider2D collider_A;
-    Collider2D collider_B;
+    protected Collider2D collider_A;
+    protected Collider2D collider_B;
 
     [Tooltip("是否在A世界")]
     [SerializeField]
-    protected bool Is_In_A_World;
+    public bool Is_In_A_World;
 
     [SerializeField]
-    protected bool Is_Can_Pass_World=true;
+    public bool Is_Can_Pass_World=true;
 
-    
+    private bool Add_ForcA = false;
+    private bool Add_ForcB = false;
+
 
     [Tooltip("改变主世界，仅用于测试")]
     protected bool Change_Main_World=false;
@@ -37,7 +39,8 @@ public class Traverable_Object : MonoBehaviour
         collider_B = World_B_Transform.GetComponent<Collider2D>();
         StartDealPosition();
         Update_Object_Trigger();
-
+        World_A_Transform.gameObject.AddComponent<Traverable_Triger>().Init(this);
+        World_B_Transform.gameObject.AddComponent<Traverable_Triger>().Init(this);
     }
     ///去A世界 
     public virtual void Go_A_World()
@@ -54,6 +57,11 @@ public class Traverable_Object : MonoBehaviour
         collider_A.isTrigger = true;
         collider_B.isTrigger = false;
         Is_In_A_World = false;
+    }
+
+    protected virtual void Deal_Triger()
+    {
+
     }
 
     /// <summary>
@@ -95,6 +103,51 @@ public class Traverable_Object : MonoBehaviour
         }
     }
 
+
+    protected void FixedUpdate()
+    {
+        if(Add_ForcA)
+        {
+            ZhuangQiangA();
+        }
+        if (Add_ForcB)
+        {
+            ZhuangQiangB();
+        }
+    }
+
+    protected virtual void ZhuangQiangA()
+    {
+        if (Mathf.Abs(rigi_A.velocity.x - (-LineControl.Get_obj.Line_Vecter)) < 0.1)
+        {
+            Vector3 temple = World_A_Transform.localPosition;
+            temple.x = LineControl.Get_obj.Line_Position;
+            World_A_Transform.localPosition = temple;
+        }
+        else if (rigi_A.velocity.x > 0)
+        {
+            Vector3 temple = rigi_A.velocity;
+            temple.x *=-1;
+            rigi_A.velocity = temple;
+        }
+    }
+
+    protected virtual void ZhuangQiangB()
+    {
+        if (Mathf.Abs(rigi_B.velocity.x - (-LineControl.Get_obj.Line_Vecter)) < 0.1)
+        {
+            Vector3 temple = World_B_Transform.localPosition;
+            temple.x = LineControl.Get_obj.Line_Position;
+            World_B_Transform.localPosition = temple;
+        }
+        else if (rigi_A.velocity.x > 0)
+        {
+            Vector3 temple = rigi_B.velocity;
+            temple.x *= -1;
+            rigi_B.velocity = temple;
+        }
+    }
+
     protected void Update()
     {
         if(Is_Can_Pass_World)
@@ -106,15 +159,21 @@ public class Traverable_Object : MonoBehaviour
             //物体在A世界，但物体坐标已经在B世界的情况需要切换世界
             if (Is_In_A_World&& LineControl.Get_obj.Object_In_B_World(World_A_Transform.localPosition))
             {
-                rigi_A.AddForce(GameManerge.Get_obj.LineForece,ForceMode2D.Force);
-
+                Add_ForcA = true;
+                Add_ForcB = false;
             }
             else if(!Is_In_A_World && LineControl.Get_obj.Object_In_A_World(World_A_Transform.localPosition))
             { //物体在B世界，但物体坐标已经在A世界的情况需要切换世界
-                rigi_B.AddForce(GameManerge.Get_obj.LineForece, ForceMode2D.Force);
-
+                Add_ForcB = true;
+                Add_ForcA = false;
+            }
+            else
+            {
+                Add_ForcA = false;
+                Add_ForcB = false;
             }
         }
+
         if(Is_In_A_World)
         {
             World_B_Transform.localPosition = World_A_Transform.localPosition;

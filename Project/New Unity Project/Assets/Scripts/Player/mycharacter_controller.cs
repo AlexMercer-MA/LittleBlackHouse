@@ -7,17 +7,16 @@ using UnityEngine;
 public class mycharacter_controller : MonoBehaviour
 {
     public GameObject friend;
-    public float gravity = 9.8f;
     public static CharacterController GetInstance;
     Rigidbody2D rb2d;
     Animator anim;
     public CircleCheck groundCheck;
     public CircleCheck ceilCheck;
+    public int gMultiplier;
 
     public bool isGrounded;
     public bool isCeiled;
     public float initialYSpeed = -1.0f;
-    public float moveSpeed = 10.0f;
     public float jumpSpeed = 10.0f;
     public float speedX;
     public float speedY;
@@ -27,20 +26,13 @@ public class mycharacter_controller : MonoBehaviour
     int vSpeedID;
     int bGround;
     int bCrouch;
+
     private void Awake()
     {
-//        GetInstance = this.GetComponent<CharacterController>();
         rb2d = this.transform.GetComponent<Rigidbody2D>();
         anim = this.transform.GetComponent<Animator>();
     }
-    /*
-    void OnTriggerExit2D(Collider2D collider)
-    {
-        if (collider.name == "line")
-        {
-            GamePropertyManager.GetInstance.LV1_switch();
-        }
-    }*/
+
 
     public void change_gravity()
     {
@@ -64,21 +56,20 @@ public class mycharacter_controller : MonoBehaviour
         isCeiled = ceilCheck.CheckCollided();
 
         //Change Horizontal Speed
-        speedX = PlayerInput.GetInstance.inputX * moveSpeed;
+        speedX = PlayerInput.GetInstance.inputX * GamePropertyManager.GetInstance.moveSpeed;
         //Change Vertical Speed
         if (!isGrounded)
         {
-            speedY = speedY - gravity * Time.fixedDeltaTime;
+            speedY = speedY + (gMultiplier * GamePropertyManager.GetInstance.gravityAbs) * Time.fixedDeltaTime;
+        }
+        //Check Jump
+        else if (PlayerInput.GetInstance.jump && isGrounded)
+        {
+            speedY += jumpSpeed * (gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
         }
         else
         {
             speedY = 0;
-            //            friend.GetComponent<CharacterController>().speedY = 0;
-        }
-        //Check Jump
-        if (PlayerInput.GetInstance.jump && isGrounded)
-        {
-            speedY += jumpSpeed * (gravity / 9.8f) * 0.4f;
         }
 
         rb2d.velocity = new Vector2(speedX, speedY);
@@ -119,3 +110,16 @@ public class mycharacter_controller : MonoBehaviour
         }*/
     }
 }
+
+
+
+#region
+/*
+void OnTriggerExit2D(Collider2D collider)
+{
+    if (collider.name == "line")
+    {
+        GamePropertyManager.GetInstance.LV1_switch();
+    }
+}*/
+#endregion

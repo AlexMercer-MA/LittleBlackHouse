@@ -49,6 +49,13 @@ public class LineControl : Single_Behaviour<LineControl> {
         mat.SetFloat("_XianNumber", Line_number);
     }
 
+    public void OnGUI()
+    {
+        GUIStyle temle = new GUIStyle();
+        temle.fontSize = 50;
+        GUILayout.Label(Line_Number.ToString(),temle);
+    }
+
     /// <summary>
     /// 物体是否在A世界
     /// </summary>
@@ -56,7 +63,7 @@ public class LineControl : Single_Behaviour<LineControl> {
     /// <returns></returns>
     public bool Object_In_A_World(Vector2 position)
     {
-       float obj_number= position.x / GameManerge.Get_obj.Max_Position.x+0.5f;
+       float obj_number = position.x / GameManerge.Get_obj.Max_Position.x+0.5f;
         if(Left_Is_A_World)
         {
             return obj_number < Line_Number;

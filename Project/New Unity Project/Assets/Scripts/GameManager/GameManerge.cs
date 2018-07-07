@@ -11,5 +11,7 @@ public class GameManerge:Single_Behaviour<GameManerge>
 
     [Tooltip("线的排斥力")]
     public Vector2 LineForece;
+
+    public ContactFilter2D canshu;
 }
 

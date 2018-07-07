@@ -39,8 +39,8 @@ public class Traverable_Object : MonoBehaviour
         collider_B = World_B_Transform.GetComponent<Collider2D>();
         StartDealPosition();
         Update_Object_Trigger();
-        World_A_Transform.gameObject.AddComponent<Traverable_Triger>().Init(this);
-        World_B_Transform.gameObject.AddComponent<Traverable_Triger>().Init(this);
+      //  World_A_Transform.gameObject.AddComponent<Traverable_Triger>().Init(this);
+      //  World_B_Transform.gameObject.AddComponent<Traverable_Triger>().Init(this);
     }
     ///去A世界 
     public virtual void Go_A_World()
@@ -104,7 +104,7 @@ public class Traverable_Object : MonoBehaviour
     }
 
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if(Add_ForcA)
         {
@@ -148,7 +148,7 @@ public class Traverable_Object : MonoBehaviour
         }
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if(Is_Can_Pass_World)
         {

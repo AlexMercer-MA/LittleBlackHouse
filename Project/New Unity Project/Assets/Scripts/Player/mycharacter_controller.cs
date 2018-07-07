@@ -57,7 +57,7 @@ public class mycharacter_controller : MonoBehaviour
         //Change Horizontal Speed
         speedX = PlayerInput.GetInstance.inputX * GamePropertyManager.GetInstance.moveSpeed;
         
-
+       
 
         //Change Vertical Speed
         if (!isGrounded)
@@ -67,7 +67,11 @@ public class mycharacter_controller : MonoBehaviour
         //Check Jump
         else if (PlayerInput.GetInstance.jump && isGrounded)
         {
+            Vector2 temple = rb2d.position;
+            temple.y-=gMultiplier * 0.01f;
+            rb2d.position = temple;
             speedY += GamePropertyManager.GetInstance.jumpSpeed * (-gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
+
         }
         else
         {

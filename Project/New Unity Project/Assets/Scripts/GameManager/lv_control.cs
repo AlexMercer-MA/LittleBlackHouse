@@ -12,27 +12,28 @@ public class lv_control : MonoBehaviour {
         level_picture.transform.GetChild(0).GetComponent<Text>().text = "Level " + level.ToString();
     }
     public bool score = false;
-    public int level = 2;
+    public int level = 0;
     public GameObject win_page;
+    public GameObject deathpage;
 	// Use this for initialization
 	void Start () {
 		
 	}
     public void next_level() {
         
-        Application.LoadLevel("Scene"+(level+1).ToString());
+        Application.LoadLevel("level" + (level+1).ToString());
 
     }
     public void got_star()
     {
         score = true;
     }
-    public GameObject deathpage;
-    public void dead() {
+    public void dead()
+    {
         deathpage.SetActive(true);
     }
     public void reload() {
-        Application.LoadLevel("Scene"+level.ToString());
+        Application.LoadLevel("level"+level.ToString());
     }
     public void win() {
         //
@@ -55,7 +56,19 @@ public class lv_control : MonoBehaviour {
         if (elapsed>2 && elapsed<20) {
             level_picture.GetComponent<RectTransform>().position = Vector3.MoveTowards(level_picture.GetComponent<RectTransform>().position,
                 new Vector3(2012,0,0), 
-                20f); }
+                20f);
+        }
+
+        if (Input.anyKeyDown && win_page.activeInHierarchy)
+        {
+            next_level();
+        }
+        else if (Input.anyKeyDown && deathpage.activeInHierarchy)
+        {
+            reload();
+        }
+
+        
 
     }
 }

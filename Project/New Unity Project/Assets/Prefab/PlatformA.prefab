@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4096743461770588}
   - component: {fileID: 212883040852504540}
   - component: {fileID: 114708427472154690}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlatformA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,8 +35,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585782602885076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1495, y: -0.8383, z: 1}
-  m_LocalScale: {x: 0.35814753, y: 0.026878439, z: 0.5454465}
+  m_LocalPosition: {x: 0, y: 0.224, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.06, z: 0.5454465}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c6ed9c894574511912feb47c075178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTrigger: 0
 --- !u!212 &212883040852504540
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f31e10d2bc55f44dd9d4acd999b68cd4, type: 3}
-  m_Color: {r: 0.6415094, g: 0.099857606, b: 0.099857606, a: 1}
+  m_Color: {r: 0.8867924, g: 0.47637996, b: 0.1966002, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

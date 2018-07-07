@@ -9,6 +9,7 @@ public class GamePropertyManager : MonoBehaviour
 
     public static GamePropertyManager GetInstance;
     public bool World_is_A = false;
+    public float jumpSpeed = 10.0f;
     public int ignoreLayerIndex;
     public float gravityAbs = 9.8f;
     public float moveSpeed = 10.0f;

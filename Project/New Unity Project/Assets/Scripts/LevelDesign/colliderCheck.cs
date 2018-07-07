@@ -45,10 +45,12 @@ public class colliderCheck : MonoBehaviour {
                 lv_control.GetInstance.win();
             }
             if (this.tag == "monster") {
+                Debug.Log("monster111");
                 lv_control.GetInstance.dead();
 
                 Destroy(player_A);
                 Destroy(player_B);
+                    Debug.Log("monster222");
             }
         }
     }

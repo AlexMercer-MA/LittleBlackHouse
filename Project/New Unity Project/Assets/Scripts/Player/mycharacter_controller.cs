@@ -17,7 +17,6 @@ public class mycharacter_controller : MonoBehaviour
     public bool isGrounded;
     public bool isCeiled;
     public float initialYSpeed = -1.0f;
-    public float jumpSpeed = 10.0f;
     public float speedX;
     public float speedY;
     bool bFaceRight_Current = true;
@@ -68,7 +67,7 @@ public class mycharacter_controller : MonoBehaviour
         //Check Jump
         else if (PlayerInput.GetInstance.jump && isGrounded)
         {
-            speedY += jumpSpeed * (-gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
+            speedY += GamePropertyManager.GetInstance.jumpSpeed * (-gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
         }
         else
         {

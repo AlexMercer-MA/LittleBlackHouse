@@ -63,7 +63,7 @@ public class LineControl : Single_Behaviour<LineControl> {
     /// <returns></returns>
     public bool Object_In_A_World(Vector2 position)
     {
-       float obj_number = position.x / GameManerge.Get_obj.Max_Position.x+0.5f;
+       float obj_number = (position.x / GameManerge.Get_obj.Max_Position.x)*0.5f+0.5f;
         if(Left_Is_A_World)
         {
             return obj_number < Line_Number;

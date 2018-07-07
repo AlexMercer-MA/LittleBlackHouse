@@ -17,14 +17,18 @@ public class Traverable_Object : MonoBehaviour
     Collider2D collider_B;
 
     [Tooltip("是否在A世界")]
-    private bool Is_In_A_World;
+    [SerializeField]
+    protected bool Is_In_A_World;
 
-    private bool Is_Can_Pass_World;
+    [SerializeField]
+    protected bool Is_Can_Pass_World=true;
+
+    
 
     [Tooltip("改变主世界，仅用于测试")]
-    public bool Change_Main_World=false;
+    protected bool Change_Main_World=false;
 
-    private void Start()
+    public virtual void Start()
     {
         rigi_A = World_A_Transform.GetComponent<Rigidbody2D>();
         rigi_B = World_B_Transform.GetComponent<Rigidbody2D>();
@@ -35,29 +39,51 @@ public class Traverable_Object : MonoBehaviour
         Update_Object_Trigger();
 
     }
+    ///去A世界 
+    public virtual void Go_A_World()
+    {
+     
+        collider_A.isTrigger = false;
+        collider_B.isTrigger = true;
+        Is_In_A_World = true;
+    }
+    ///去B世界 
+    public virtual void Go_B_World()
+    {
+     
+        collider_A.isTrigger = true;
+        collider_B.isTrigger = false;
+        Is_In_A_World = false;
+    }
+
     /// <summary>
     ///  更新是否是碰撞体或者触发器
     /// </summary>
-    private void Update_Object_Trigger()
+    protected void Update_Object_Trigger()
     {
+        Debug.Log("在A世界吗" + LineControl.Get_obj.Object_In_A_World(World_A_Transform.localPosition));
         if (LineControl.Get_obj.Object_In_A_World(World_A_Transform.localPosition))
         {
-            collider_A.isTrigger = false;
-            collider_B.isTrigger = true;
-            Is_In_A_World = true;
+            if(Is_In_A_World==false)
+            {
+                Go_A_World();
+            }
+
         }
         else
         {
-            collider_A.isTrigger = true;
-            collider_B.isTrigger = false;
-            Is_In_A_World = false;
+            if (Is_In_A_World == true)
+            {
+                Go_B_World();
+            }
+           
         }
     }
 
     /// <summary>
     /// 初始化同步两个世界的物体坐标
     /// </summary>
-    private void StartDealPosition()
+    protected void StartDealPosition()
     {
         if (Change_Main_World)
         {
@@ -69,7 +95,7 @@ public class Traverable_Object : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected void Update()
     {
         if(Is_Can_Pass_World)
         {
@@ -77,17 +103,18 @@ public class Traverable_Object : MonoBehaviour
         }
         else
         {
-            //物体在A世界，但物体坐标已经在B世界的情况
+            //物体在A世界，但物体坐标已经在B世界的情况需要切换世界
             if (Is_In_A_World&& LineControl.Get_obj.Object_In_B_World(World_A_Transform.localPosition))
             {
                 rigi_A.AddForce(GameManerge.Get_obj.LineForece,ForceMode2D.Force);
+
             }
             else if(!Is_In_A_World && LineControl.Get_obj.Object_In_A_World(World_A_Transform.localPosition))
-            { //物体在B世界，但物体坐标已经在A世界的情况
+            { //物体在B世界，但物体坐标已经在A世界的情况需要切换世界
                 rigi_B.AddForce(GameManerge.Get_obj.LineForece, ForceMode2D.Force);
+
             }
         }
-
         if(Is_In_A_World)
         {
             World_B_Transform.localPosition = World_A_Transform.localPosition;

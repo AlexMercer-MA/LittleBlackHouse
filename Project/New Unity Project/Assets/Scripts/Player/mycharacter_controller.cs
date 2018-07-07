@@ -33,7 +33,7 @@ public class mycharacter_controller : MonoBehaviour
         anim = this.transform.GetComponent<Animator>();
     }
 
-
+    
     public void change_gravity()
     {
         if (isGrounded || speedY<1) { speedY = 0; } else { speedY *= -1; }
@@ -65,7 +65,7 @@ public class mycharacter_controller : MonoBehaviour
         //Check Jump
         else if (PlayerInput.GetInstance.jump && isGrounded)
         {
-            speedY += jumpSpeed * (gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
+            speedY += jumpSpeed * (-gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
         }
         else
         {

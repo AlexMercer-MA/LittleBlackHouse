@@ -431,10 +431,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 351968892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3879014416bd764b80311dd59cfb590, type: 3}
+  m_Script: {fileID: 11500000, guid: 039412bc49ac7437bb9d71c96b163845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 0
+  world: 0
 --- !u!1 &397239375
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537576272}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1413,10 +1413,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500718298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3879014416bd764b80311dd59cfb590, type: 3}
+  m_Script: {fileID: 11500000, guid: 039412bc49ac7437bb9d71c96b163845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 1
+  world: 1
 --- !u!1 &1603378540
 GameObject:
   m_ObjectHideFlags: 0

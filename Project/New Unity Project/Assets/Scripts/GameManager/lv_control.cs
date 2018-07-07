@@ -38,12 +38,14 @@ public class lv_control : MonoBehaviour {
     public void win() {
         //
         if (score) {
-            win_page.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 0, 1f);
-            win_page.transform.GetChild(1).GetComponent<Text>().text = "You got the star!!";
+            win_page.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1f);
+            win_page.transform.GetChild(1).GetComponent<Text>().color = new Color(1f, 1f, 0.04f, 1f);
+            win_page.transform.GetChild(1).GetComponent<Text>().text = "完成奖励物品收集!!";
         }
         else {
-            win_page.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 0, 0.5f);
-            win_page.transform.GetChild(1).GetComponent<Text>().text = "You didn't get the star...";
+            win_page.transform.GetChild(0).GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 1f);
+            win_page.transform.GetChild(1).GetComponent<Text>().color = new Color(1f, 0.7f, 0.7f, 1f);
+            win_page.transform.GetChild(1).GetComponent<Text>().text = "未完成奖励物品收集...";
         }
 
         win_page.SetActive(true);
@@ -59,7 +61,11 @@ public class lv_control : MonoBehaviour {
                 20f);
         }
 
-        if (Input.anyKeyDown && win_page.activeInHierarchy)
+        if (Input.GetKeyDown(KeyCode.R) && win_page.activeInHierarchy)
+        {
+            reload();
+        }
+        else if (Input.anyKeyDown && win_page.activeInHierarchy)
         {
             next_level();
         }

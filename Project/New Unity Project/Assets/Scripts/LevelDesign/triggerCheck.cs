@@ -38,7 +38,7 @@ public class triggerCheck : MonoBehaviour {
         Debug.Log("AAA");
         isWorld_A = LineControl.Get_obj.Object_In_A_World(character_A.transform.localPosition) ? true : false ;
 
-        if ((tempCollider.tag == "PlayerA" && isWorld_A) || (tempCollider.tag == "PlayerB" && (!isWorld_A))) 
+        if ((tempCollider.tag == "PlayerA" && isWorld_A) || (tempCollider.tag == "PlayerB" && (!isWorld_A)))
         {
             //got eaten
             if (this.name == "Star")
@@ -49,9 +49,13 @@ public class triggerCheck : MonoBehaviour {
                     this.gameObject.SetActive(false);
                 }
             }
-            if (this.name == "Gate") 
+            if (this.name == "Gate_A" || this.name == "Gate_B") 
             {
                 lv_control.GetInstance.win();
+
+                Destroy(character_A);
+                Destroy(character_B);
+                Destroy(this);
             }
             if (this.tag == "monster") 
             {
@@ -59,6 +63,7 @@ public class triggerCheck : MonoBehaviour {
 
                 Destroy(character_A);
                 Destroy(character_B);
+                Destroy(this);
             }
         }
     }

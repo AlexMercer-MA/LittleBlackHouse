@@ -12,10 +12,10 @@ public class bullet_script : MonoBehaviour {
     }
 
     public float speed_x;
-    public float speed_y;
+    //public float speed_y;
 
     // Update is called once per frame
     void Update () {
-        transform.Translate(speed_x,speed_y,0);
+        transform.Translate(speed_x,0,0,Space.Self);
 	}
 }

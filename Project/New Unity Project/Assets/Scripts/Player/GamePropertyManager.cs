@@ -14,19 +14,21 @@ public class GamePropertyManager : MonoBehaviour
     public float gravityAbs = 9.8f;
     public float moveSpeed = 10.0f;
 
+    public GameObject Character_A;
+    public GameObject Character_B;
+
+    public int colliderLayer_world_A;
+    public int colliderLayer_world_B;
+
     void Awake()
     {
         GetInstance = this;
         ignoreLayerIndex = 9;// LayerMask.GetMask("Player", "IgnoreCollision");
+        Character_A = GameObject.Find("Character_A");
+        Character_B = GameObject.Find("Character_B");
 
+        //colliderCheck.cs 中碰撞题所在层级判断
+        colliderLayer_world_A = LayerMask.GetMask("World_A");
+        colliderLayer_world_B = LayerMask.GetMask("World_B");
     }
-
-    void FixedUpdate()
-    {
-    
-    }
-
-
-
-  
 }

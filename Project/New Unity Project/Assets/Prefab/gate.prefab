@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 70195881539484048}
   - component: {fileID: 114047729219876236}
   m_Layer: 0
-  m_Name: gate
+  m_Name: Gate
   m_TagString: ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,8 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec4618bbabf9ea4dbf42729baca1747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player_A: {fileID: 0}
-  player_B: {fileID: 0}
   isWorld_A: 0
 --- !u!212 &212670897998913028
 SpriteRenderer:

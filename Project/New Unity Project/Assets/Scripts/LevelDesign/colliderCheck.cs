@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class colliderCheck : MonoBehaviour {
 
-    public GameObject player_A;
-    public GameObject player_B;
-
+    GameObject character_A;
+    GameObject character_B;
 
     public bool isWorld_A;
     bool self_isWorld_A;
@@ -14,24 +13,32 @@ public class colliderCheck : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        if (this.gameObject.layer == 8)
+        if (this.gameObject.layer == GamePropertyManager.GetInstance.colliderLayer_world_A)
         {
             self_isWorld_A = true;
         }
-        else if (this.gameObject.layer == 9)
+        else if(this.gameObject.layer == GamePropertyManager.GetInstance.colliderLayer_world_B)
         {
             self_isWorld_A = false;
         }
+
+        character_A = GamePropertyManager.GetInstance.Character_A;
+        character_B = GamePropertyManager.GetInstance.Character_B;
+
+        int parentLayerIndex = this.transform.parent.gameObject.layer;
+
+        this.gameObject.layer = parentLayerIndex;
     }
 
     void OnTriggerEnter2D(Collider2D tempCollider)
     {
-        isWorld_A = LineControl.Get_obj.Object_In_A_World(player_A.transform.localPosition) ? true : false ;
+        isWorld_A = LineControl.Get_obj.Object_In_A_World(character_A.transform.localPosition) ? true : false ;
         if (isWorld_A != self_isWorld_A)
         {
             return;
         }
-        if (tempCollider.tag == "Player") {
+        if (tempCollider.tag == "Player") 
+        {
             //got eaten
             if (this.name == "star")
             {
@@ -41,18 +48,17 @@ public class colliderCheck : MonoBehaviour {
                     this.gameObject.SetActive(false);
                 }
             }
-            if (this.name == "gate") {
+            if (this.name == "gate") 
+            {
                 lv_control.GetInstance.win();
             }
-            if (this.tag == "monster") {
-                Debug.Log("monster111");
+            if (this.tag == "monster") 
+            {
                 lv_control.GetInstance.dead();
 
-                Destroy(player_A);
-                Destroy(player_B);
-                    Debug.Log("monster222");
+                Destroy(character_A);
+                Destroy(character_B);
             }
         }
     }
-	
 }

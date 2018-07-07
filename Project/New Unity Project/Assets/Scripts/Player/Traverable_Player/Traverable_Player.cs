@@ -23,10 +23,11 @@ public class Traverable_Player:Traverable_Object
     {
         base.Go_A_World();
         player_a.speedX = player_b.speedX;
-        World_A_Transform.localPosition = World_B_Transform.localPosition;
         player_a.speedY = player_b.speedY;
-     /*   player_a.enabled = true;
+        World_A_Transform.localPosition = World_B_Transform.localPosition;
+        /*player_a.enabled = true;
         player_b.enabled = false;*/
+        player_b.speedY = 0;
     }
     public override void Go_B_World()
     {
@@ -34,8 +35,9 @@ public class Traverable_Player:Traverable_Object
         player_b.speedX = player_a.speedX;
         player_b.speedY = player_a.speedY;
         World_B_Transform.localPosition = World_A_Transform.localPosition;
-        /*player_b.enabled = true;
+       /* player_b.enabled = true;
         player_a.enabled = false;*/
+        player_a.speedY = 0;
     }
 }
 

@@ -61,7 +61,7 @@ public class Traverable_Object : MonoBehaviour
     /// </summary>
     protected void Update_Object_Trigger()
     {
-        Debug.Log("在A世界吗" + LineControl.Get_obj.Object_In_A_World(World_A_Transform.localPosition));
+        //Debug.Log("在A世界吗" + LineControl.Get_obj.Object_In_A_World(World_A_Transform.localPosition));
         if (LineControl.Get_obj.Object_In_A_World(World_A_Transform.localPosition))
         {
             if(Is_In_A_World==false)

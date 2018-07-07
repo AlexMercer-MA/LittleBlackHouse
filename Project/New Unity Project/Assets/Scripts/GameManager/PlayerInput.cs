@@ -25,7 +25,7 @@ public class PlayerInput : MonoBehaviour {
     {
         input_x = Input.GetAxis("Horizontal");
         input_y = Input.GetAxis("Vertical");
-        input_jump = Input.GetButton("Jump") ? true : false;
+        input_jump = Input.GetButtonDown("Jump") ? true : false;
         
         /*
         Debug.Log(inputX);

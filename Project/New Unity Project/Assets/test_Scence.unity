@@ -322,7 +322,7 @@ MonoBehaviour:
   Line_number: 0
   Is_test: 0
   mat: {fileID: 2100000, guid: 06bb2871e41e8f049ade90d2f16e2d27, type: 2}
-  Loop_Time: 3
+  Loop_Time: 10
 --- !u!4 &313391885
 Transform:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ MonoBehaviour:
   gMultiplier: -1
   isGrounded: 0
   isCeiled: 0
-  initialYSpeed: 0
+  initialYSpeed: 1
   jumpSpeed: 0.5
   speedX: 0
   speedY: 0
@@ -806,7 +806,7 @@ GameObject:
   - component: {fileID: 1065922376}
   - component: {fileID: 1065922375}
   m_Layer: 0
-  m_Name: GroundCheck_A
+  m_Name: CeilCheck_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 1078033289}
   - component: {fileID: 1078033288}
   m_Layer: 0
-  m_Name: CeilCheck_A
+  m_Name: GroundCheck_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   gMultiplier: 1
   isGrounded: 0
   isCeiled: 0
-  initialYSpeed: 0
+  initialYSpeed: 1
   jumpSpeed: 0.5
   speedX: 0
   speedY: 0

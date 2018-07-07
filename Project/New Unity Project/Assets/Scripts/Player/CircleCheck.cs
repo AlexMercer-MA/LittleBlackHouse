@@ -16,7 +16,7 @@ public class CircleCheck : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
 
-        Debug.Log(collider.name+" in");
+        //Debug.Log(collider.name+" in");
 //        if (collider.gameObject.layer != GamePropertyManager.GetInstance.ignoreLayerIndex )
   //      {
             collisionTargerNum++;
@@ -25,7 +25,7 @@ public class CircleCheck : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log(collider.name+" out");
+        //Debug.Log(collider.name+" out");
         //  if (collider.gameObject.layer != GamePropertyManager.GetInstance.ignoreLayerIndex)
         //{
         collisionTargerNum--;

@@ -9,13 +9,13 @@ public class movingbox : MonoBehaviour {
     public Vector3 endposition;
     Vector3 destination;
     void Awake() {
-        destination = new Vector3(5,0,0);
+        destination = endposition;
     }
 	void Update () {
-        Debug.Log(destination.y);
-        if (Vector3.Distance(transform.localPosition, endposition)<1){
+        //Debug.Log(destination.y);
+        if (Vector3.Distance(transform.localPosition, endposition)<0.001f){
             destination = startposition;          
-        }else if (Vector3.Distance(transform.localPosition, startposition) < 1)
+        }else if (Vector3.Distance(transform.localPosition, startposition) < 0.001f)
         {
             destination = endposition;
         }

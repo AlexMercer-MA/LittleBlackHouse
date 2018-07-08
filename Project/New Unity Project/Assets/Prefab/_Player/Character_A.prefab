@@ -339,6 +339,7 @@ MonoBehaviour:
   initialYSpeed: 0
   speedX: 0
   speedY: 0
+  maxAbsSpeedY: 0.95
 --- !u!114 &114068397504845058
 MonoBehaviour:
   m_ObjectHideFlags: 1

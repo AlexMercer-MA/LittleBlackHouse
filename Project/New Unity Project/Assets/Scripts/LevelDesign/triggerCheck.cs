@@ -35,7 +35,6 @@ public class triggerCheck : MonoBehaviour {
     //进入触发器范围之后的逻辑处理
     void OnTriggerEnter2D(Collider2D tempCollider)
     {
-        Debug.Log("AAA");
         isWorld_A = LineControl.Get_obj.Object_In_A_World(character_A.transform.localPosition) ? true : false ;
 
         if ((tempCollider.tag == "PlayerA" && isWorld_A) || (tempCollider.tag == "PlayerB" && (!isWorld_A)))
@@ -60,10 +59,10 @@ public class triggerCheck : MonoBehaviour {
             if (this.tag == "monster") 
             {
                 lv_control.GetInstance.dead();
-
-                Destroy(character_A);
-                Destroy(character_B);
+                
                 Destroy(this);
+                character_A.GetComponentInChildren<Animator>().SetTrigger("die");
+                character_B.GetComponentInChildren<Animator>().SetTrigger("die");
             }
         }
     }

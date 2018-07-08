@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4201669156934158}
+  - component: {fileID: 95034348383904112}
   - component: {fileID: 212845953379562376}
   m_Layer: 11
   m_Name: Character_Sprite_B
@@ -35,14 +36,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4897487480333944}
-  - component: {fileID: 95918159457322632}
   - component: {fileID: 50719762548570052}
   - component: {fileID: 70675995737974808}
   - component: {fileID: 114581447698179428}
   - component: {fileID: 114587238366196466}
   m_Layer: 11
   m_Name: Character_B
-  m_TagString: Player
+  m_TagString: PlayerB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 1261210033041728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.6517118, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4897487480333944}
   m_RootOrder: 0
@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1519071528551442}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.79499984, y: -0.055, z: 1.5}
+  m_LocalPosition: {x: -0.795, y: -0.05500001, z: 1.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4201669156934158}
@@ -301,13 +301,13 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.125, y: 0.25}
   m_Direction: 0
---- !u!95 &95918159457322632
+--- !u!95 &95034348383904112
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1519071528551442}
+  m_GameObject: {fileID: 1261210033041728}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 0}
@@ -427,7 +427,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -435,5 +435,5 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

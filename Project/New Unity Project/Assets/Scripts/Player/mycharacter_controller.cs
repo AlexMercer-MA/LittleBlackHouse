@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
 public class mycharacter_controller : MonoBehaviour
 {
     public GameObject friend;
@@ -19,17 +18,14 @@ public class mycharacter_controller : MonoBehaviour
     public float initialYSpeed = -1.0f;
     public float speedX;
     public float speedY;
+    public float maxAbsSpeedY;
     bool bFaceRight_Current = true;
     bool bFaceRight_Previous = true;
-    int hSpeedID;
-    int vSpeedID;
-    int bGround;
-    int bCrouch;
 
     private void Awake()
     {
         rb2d = this.transform.GetComponent<Rigidbody2D>();
-        anim = this.transform.GetComponent<Animator>();
+        anim = this.transform.GetComponentInChildren<Animator>();
     }
 
     
@@ -40,13 +36,6 @@ public class mycharacter_controller : MonoBehaviour
             friend.GetComponent<mycharacter_controller>().speedY = speedY;
        
     }
-
-    private void Start()
-    {
-        hSpeedID = Animator.StringToHash("hSpeed");
-        vSpeedID = Animator.StringToHash("vSpeed");
-    }
-
 
     void FixedUpdate()
     {
@@ -68,18 +57,17 @@ public class mycharacter_controller : MonoBehaviour
         else if (PlayerInput.GetInstance.jump && isGrounded)
         {
             Vector2 temple = rb2d.position;
-            temple.y-=gMultiplier * 0.01f;
+            temple.y -= gMultiplier * 0.01f;
             rb2d.position = temple;
-            speedY += GamePropertyManager.GetInstance.jumpSpeed * (-gMultiplier *  GamePropertyManager.GetInstance.gravityAbs );
-
+            speedY += GamePropertyManager.GetInstance.jumpSpeed * ( -gMultiplier * GamePropertyManager.GetInstance.gravityAbs );
+            anim.SetTrigger("jump");
         }
         else
         {
             speedY = 0;
         }
 
-       
-
+        speedY = Mathf.Clamp(speedY, -maxAbsSpeedY, maxAbsSpeedY);
         rb2d.velocity = new Vector2(speedX, speedY);
     }
 
@@ -99,16 +87,9 @@ public class mycharacter_controller : MonoBehaviour
             this.transform.localScale = newlocalScale;
         }
 
-        anim.SetFloat(hSpeedID, Mathf.Abs(speedX));
-        if (isGrounded)
-        {
-            anim.SetFloat(vSpeedID, 0.0f);
-        }
-        else
-        {
-            anim.SetFloat(vSpeedID, speedY);
-        }
-        anim.SetBool("bGround", isGrounded);
+        anim.SetFloat("speed", Mathf.Abs(speedX));
+
+        anim.SetBool("grounded", isGrounded);
 
         bFaceRight_Previous = bFaceRight_Current;
         /*

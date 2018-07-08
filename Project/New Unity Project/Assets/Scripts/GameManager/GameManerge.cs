@@ -13,5 +13,12 @@ public class GameManerge:Single_Behaviour<GameManerge>
     public Vector2 LineForece;
 
     public ContactFilter2D canshu;
+
+    private void Start()
+    {
+
+        GameObject Line_Prf = (GameObject)Resources.Load("LinePrf");
+        Instantiate(Line_Prf);
+    }
 }
 

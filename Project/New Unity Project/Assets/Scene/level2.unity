@@ -1222,6 +1222,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.4933924
       objectReference: {fileID: 0}
+    - target: {fileID: 1585782602885076, guid: ed852f711931c4339969850488c3528e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed852f711931c4339969850488c3528e, type: 2}
   m_IsPrefabParent: 0

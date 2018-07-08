@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114766561348327240}
   - component: {fileID: 114314284033154354}
   m_Layer: 0
-  m_Name: Trap1
+  m_Name: TrapB1
   m_TagString: monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
